@@ -4,7 +4,7 @@ module Client::KeyGenerator
   included do
     validates :token, :private_key, presence: true, uniqueness: true
 
-    after_initialize :generate_keys
+    after_initialize :generate_keys, if: :new_record?
   end
 
   private
