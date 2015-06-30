@@ -23,3 +23,8 @@ group :development, :test do
   gem 'shoulda-matchers'
 end
 
+group :test do
+  # set of strategies for cleaning tes db
+  gem 'database_cleaner'
+end
+

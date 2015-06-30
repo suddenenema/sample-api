@@ -3,10 +3,12 @@ module Api
     class SampleController < ApplicationApiController
 
       def index
-        if Client.authorized?(request.query_parameters)
-          render json: { data: 'private data' }
+        client = Client.authorize(request.query_parameters)
+
+        if client
+          render json: { data: 'authorized data' }
         else
-          render json: { data: 'anauthorized' }
+          render json: { data: 'anauthorized' }, status: 401
         end
       end
 

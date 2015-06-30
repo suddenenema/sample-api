@@ -11,16 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629031901) do
+ActiveRecord::Schema.define(version: 20150629104634) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "token"
     t.string   "private_key"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "secret_key"
   end
 
   add_index "clients", ["private_key"], name: "index_clients_on_private_key", unique: true
+  add_index "clients", ["secret_key"], name: "index_clients_on_secret_key", unique: true
   add_index "clients", ["token"], name: "index_clients_on_token", unique: true
 
 end
